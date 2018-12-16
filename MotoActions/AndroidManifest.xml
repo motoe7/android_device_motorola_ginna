@@ -47,7 +47,7 @@
         </activity>
 
         <activity
-            android:name=".ActionsPreferenceActivity"
+            android:name=".MainPreferenceActivity"
             android:label="@string/moto_gestures_panel_title"
             android:theme="@style/MotoActions">
             <intent-filter>
@@ -62,6 +62,31 @@
             <meta-data
                 android:name="com.android.settings.summary"
                 android:resource="@string/screen_gestures_panel_summary" />
+        </activity>
+
+        <activity
+            android:name=".ActionsPreferenceActivity"
+            android:label="@string/device_gestures_title"
+            android:theme="@style/MotoActions">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/ic_settings_gestures" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/device_gestures_summary" />
+        </activity>
+
+        <!-- Display Calibration -->
+        <activity
+            android:name="com.moto.actions.DisplayCalibration"
+            android:label="@string/kcal_title"
+	    android:theme="@style/MotoActions">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
 
     </application>
