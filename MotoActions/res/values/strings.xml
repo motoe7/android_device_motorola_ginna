@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="screen_gestures_panel_summary" translatable="false">Motorola Gestures and Extrass</string>
+    <string name="screen_gestures_panel_summary" translatable="false">Motorola Gestures and Extras</string>
     <string name="moto_gestures_panel_title">Moto Extras</string>
 
     <!-- Device gestures -->
