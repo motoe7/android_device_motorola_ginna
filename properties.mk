@@ -78,6 +78,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.enable_default_color_mode=1
 
+# Dex2Oat
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat64.enabled=true \
+    ro.sys.fw.dex2oat_thread_count=8
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.hwc_set_default_colormode=true \
