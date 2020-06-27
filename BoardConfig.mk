@@ -168,6 +168,10 @@ TARGET_FS_CONFIG_GEN += \
     $(DEVICE_PATH)/config.fs \
     $(DEVICE_PATH)/mot_aids.fs
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_ginna
+TARGET_RECOVERY_DEVICE_MODULES := libinit_ginna
+
 # Kernel
 BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_serial_dm,0x78af000 androidboot.usbconfigfs=true loop.max_part=7 printk.devkmsg=on androidboot.hab.csv=0 androidboot.hab.product=gin androidboot.hab.cid=0 androidboot.boot_devices=soc/7824900.sdhci
 #BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
