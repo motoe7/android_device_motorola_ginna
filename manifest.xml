@@ -374,11 +374,9 @@
     <hal format="hidl">
         <name>vendor.qti.gnss</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ILocHidlGnss</name>
-            <instance>gnss_vendor</instance>
-        </interface>
+        <fqname>@1.2::ILocHidlGnss/gnss_vendor</fqname>
+        <fqname>@2.1::ILocHidlGnss/gnss_vendor</fqname>
+        <fqname>@3.0::ILocHidlGnss/gnss_vendor</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.bluetooth_sar</name>
