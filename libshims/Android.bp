@@ -1,0 +1,19 @@
+cc_library {
+    name: "libmemset_shim",
+    vendor: true,
+    target: {
+        android_arm: {
+            srcs: ["memset/arch-arm/memset32.S"],
+            sanitize: {
+                misc_undefined: ["integer"],
+            },
+        },
+        android_arm64: {
+            srcs: ["memset/arch-arm64/android_memset.S"],
+            sanitize: {
+                misc_undefined: ["integer"],
+            },
+        },
+    },
+}
+
