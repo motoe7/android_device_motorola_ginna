@@ -66,6 +66,10 @@ function blob_fixup() {
         sed -i 's/xml version="2.0"/xml version="1.0"/' "${2}"
         ;;
 
+    vendor/lib64/libril-qc-hal-qmi.so)
+        patchelf --add-needed "libstrndup_shim.so" "${2}"
+        ;;
+
     esac
 }
 

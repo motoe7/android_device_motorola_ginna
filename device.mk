@@ -433,7 +433,9 @@ PRODUCT_COPY_FILES += \
 
 # Shims
 PRODUCT_PACKAGES += \
-    libqsap_shim
+    libqsap_shim \
+    libstrndup_shim \
+    libmemset_shim
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
