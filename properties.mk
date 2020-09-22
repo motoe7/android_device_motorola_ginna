@@ -87,14 +87,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.hwc_set_default_colormode=true \
     debug.sf.enable_hwc_vds=1 \
-    debug.sf.hw=1 \
+    debug.sf.hw=0 \
     debug.sf.latch_unsignaled=1 \
     vendor.gralloc.enable_fb_ubwc=1 \
     debug.sf.disable_backpressure=1 \
     dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=196610 \
-    ro.qualcomm.cabl=0 \
     ro.sf.lcd_density=320
+    ro.qualcomm.cabl=2 \
+    vendor.gralloc.disable_ahardware_buffer=1 \
+    vendor.display.disable_skip_validate=1 \
+    sdm.debug.disable_skip_validate=1 \
+    debug.enable.sglscale=1
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
