@@ -1,5 +1,5 @@
 #
-# props for sdm632
+# props for ginna
 #
 
 # Audio
@@ -44,6 +44,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.voice.path.for.pcm.voip=false \
     vendor.audio.offload.min.duration.secs=60
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.audio.calfile0=/vendor/etc/acdbdata/na/Bluetooth_cal.acdb \
+    persist.vendor.audio.calfile1=/vendor/etc/acdbdata/na/General_cal.acdb \
+    persist.vendor.audio.calfile2=/vendor/etc/acdbdata/na/Global_cal.acdb \
+    persist.vendor.audio.calfile3=/vendor/etc/acdbdata/na/Handset_cal.acdb \
+    persist.vendor.audio.calfile4=/vendor/etc/acdbdata/na/Hdmi_cal.acdb \
+    persist.vendor.audio.calfile5=/vendor/etc/acdbdata/na/Headset_cal.acdb \
+    persist.vendor.audio.calfile6=/vendor/etc/acdbdata/na/Speaker_cal.acdb
+
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     use.voice.path.for.pcm.voip=false
 
@@ -58,7 +67,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vidc.enc.dcvs.extra-buff-count=2 \
     persist.vendor.camera.preview.ubwc=0 \
     vendor.video.disable.ubwc=1 \
-    vendor.vidc.disable.split.mode=1
+    vendor.vidc.disable.split.mode=1 \
+    persist.vendor.camera.expose.aux=1
 
 # Codec2 switch
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -78,7 +88,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.disable_backpressure=1 \
     dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=196610 \
-    ro.qualcomm.cabl=0
+    ro.qualcomm.cabl=0 \
+    ro.sf.lcd_density=320
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -182,6 +193,22 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     DEVICE_PROVISIONED=1 \
     ril.subscription.types=NV,RUIM \
     telephony.lteOnCdmaDevice=1
+
+# Sensors
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.sensors=ginna \
+    ro.vendor.sensors.amd=false \
+    ro.vendor.sensors.facing=false \
+    ro.vendor.sensors.glance_approach=false \
+    ro.vendor.sensors.glance_cover_to_wake=false \
+    ro.vendor.sensors.mot_detect=true \
+    ro.vendor.sensors.mot_ltv=true \
+    ro.vendor.sensors.pedometer=false \
+    ro.vendor.sensors.pmd=false \
+    ro.vendor.sensors.rmd=false \
+    ro.vendor.sensors.scrn_ortn=false \
+    ro.vendor.sensors.sta_detect=true \
+    ro.vendor.sdk.sensors.gestures=false
 
 # SurfaceFlinger
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
