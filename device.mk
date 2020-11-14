@@ -51,7 +51,8 @@ AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     system \
-    vendor
+    vendor \
+    product
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -74,7 +75,8 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
     bootctrl.msm8953 \
-    bootctrl.msm8953.recovery
+    bootctrl.msm8953.recovery \
+    fastbootd
 
 # Audio
 PRODUCT_PACKAGES += \
