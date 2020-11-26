@@ -88,6 +88,9 @@ on post-fs
     write /proc/sys/vm/swappiness 100
     setprop sys.sysctl.swappiness 100
 
+    # Load Touch Firmware
+    start vendor.mmi-touch-sh
+
 on post-fs-data
 
     # Setup folders for security
@@ -309,3 +312,7 @@ on property:vendor.wifi.station=true
 on property:vendor.wifi.station=false
     write /sys/module/wlan/parameters/sar_sta disabled
 
+service vendor.mmi-touch-sh /vendor/bin/init.mmi.touch.sh
+    class core
+    user root
+    disabled
