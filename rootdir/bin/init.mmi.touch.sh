@@ -29,3 +29,5 @@ wait_for_poweron
 
 echo 1 > $touch_path/forcereflash
 echo $firmware_file > $touch_path/doreflash
+
+return 0
