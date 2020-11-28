@@ -134,6 +134,29 @@ LensInfo : Information of the lens present in the module.
    </CameraModuleConfig>
    <CameraModuleConfig>
     <CameraId>1</CameraId>
+    <SensorName>mot_s5k4h7yx03</SensorName>
+    <EepromName>mot_s5k4h7yx03</EepromName>
+    <ChromatixName>mot_s5k4h7fb0_chromatix</ChromatixName>
+    <ModesSupported>1</ModesSupported>
+    <Position>FRONT</Position>
+    <MountAngle>90</MountAngle>
+    <CSIInfo>
+      <CSIDCore>0</CSIDCore>
+      <LaneMask>0x1F</LaneMask>
+      <LaneAssign>0x4320</LaneAssign>
+      <ComboMode>0</ComboMode>
+    </CSIInfo>
+    <LensInfo>
+      <FocalLength>2.67</FocalLength>
+      <FNumber>2.2</FNumber>
+      <TotalFocusDistance>0.558</TotalFocusDistance>
+      <HorizontalViewAngle>67.8</HorizontalViewAngle>
+      <VerticalViewAngle>54.2</VerticalViewAngle>
+      <MinFocusDistance>0.312</MinFocusDistance>
+    </LensInfo>
+   </CameraModuleConfig>
+   <CameraModuleConfig>
+    <CameraId>1</CameraId>
     <SensorName>mot_hi556</SensorName>
     <EepromName>gin_hi556</EepromName>
     <ChromatixName>mot_hi556_chromatix</ChromatixName>
@@ -153,6 +176,31 @@ LensInfo : Information of the lens present in the module.
       <HorizontalViewAngle>64.5</HorizontalViewAngle>
       <VerticalViewAngle>50.8</VerticalViewAngle>
       <MinFocusDistance>0.288</MinFocusDistance>
+    </LensInfo>
+  </CameraModuleConfig>
+  <CameraModuleConfig>
+    <CameraId>2</CameraId>
+    <SensorName>mot_ov02a</SensorName>
+    <EepromName>mot_ov02a</EepromName>
+    <ActuatorName>mot_gt9772</ActuatorName>
+    <FlashName>pmic</FlashName>
+    <ChromatixName>mot_ov02a_chromatix</ChromatixName>
+    <ModesSupported>1</ModesSupported>
+    <Position>BACK_AUX</Position>
+    <MountAngle>90</MountAngle>
+    <CSIInfo>
+      <CSIDCore>2</CSIDCore>
+      <LaneMask>0x3</LaneMask>
+      <LaneAssign>0x0</LaneAssign>
+      <ComboMode>0</ComboMode>
+    </CSIInfo>
+    <LensInfo>
+      <FocalLength>1.85</FocalLength>
+      <FNumber>2.2</FNumber>
+      <TotalFocusDistance>10</TotalFocusDistance>
+      <HorizontalViewAngle>74.2</HorizontalViewAngle>
+      <VerticalViewAngle>59.2</VerticalViewAngle>
+      <MinFocusDistance>0.025</MinFocusDistance>
     </LensInfo>
   </CameraModuleConfig>
   <CameraModuleConfig>
