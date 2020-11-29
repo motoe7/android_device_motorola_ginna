@@ -26,13 +26,11 @@ import android.provider.Settings;
 import android.util.Log;
 
 import org.lineageos.settings.device.actions.UpdatedStateNotifier;
-import org.lineageos.settings.device.actions.CameraActivationAction;
 import org.lineageos.settings.device.actions.TorchAction;
 
 public class LineageActionsSettings {
     private static final String TAG = "LineageActions";
 
-    private static final String GESTURE_CAMERA_ACTION_KEY = "gesture_camera_action";
     private static final String GESTURE_CHOP_CHOP_KEY = "gesture_chop_chop";
     private static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
     private static final String GESTURE_IR_WAKEUP_KEY = "gesture_hand_wave";
@@ -43,7 +41,6 @@ public class LineageActionsSettings {
     private final Context mContext;
     private final UpdatedStateNotifier mUpdatedStateNotifier;
 
-    private boolean mCameraGestureEnabled;
     private boolean mChopChopEnabled;
     private boolean mPickUpGestureEnabled;
     private boolean mIrWakeUpEnabled;
@@ -57,10 +54,6 @@ public class LineageActionsSettings {
         sharedPrefs.registerOnSharedPreferenceChangeListener(mPrefListener);
         mContext = context;
         mUpdatedStateNotifier = updatedStateNotifier;
-    }
-
-    public boolean isCameraGestureEnabled() {
-        return mCameraGestureEnabled;
     }
 
     public boolean isChopChopGestureEnabled() {
@@ -95,16 +88,11 @@ public class LineageActionsSettings {
         return mLiftToSilenceEnabled;
     }
 
-    public void cameraAction() {
-        new CameraActivationAction(mContext).action();
-    }
-
     public void chopChopAction() {
         new TorchAction(mContext).action();
     }
 
     private void loadPreferences(SharedPreferences sharedPreferences) {
-        mCameraGestureEnabled = sharedPreferences.getBoolean(GESTURE_CAMERA_ACTION_KEY, true);
         mChopChopEnabled = sharedPreferences.getBoolean(GESTURE_CHOP_CHOP_KEY, true);
         mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, true);
         mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, true);
@@ -119,9 +107,7 @@ public class LineageActionsSettings {
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             boolean updated = true;
 
-            if (GESTURE_CAMERA_ACTION_KEY.equals(key)) {
-                mCameraGestureEnabled = sharedPreferences.getBoolean(GESTURE_CAMERA_ACTION_KEY, true);
-            } else if (GESTURE_CHOP_CHOP_KEY.equals(key)) {
+            if (GESTURE_CHOP_CHOP_KEY.equals(key)) {
                 mChopChopEnabled = sharedPreferences.getBoolean(GESTURE_CHOP_CHOP_KEY, true);
             } else if (GESTURE_IR_WAKEUP_KEY.equals(key)) {
                 mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, true);
