@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2019 The LineageOS Open Source Project
+# Copyright (C) 2020 The LibreMobileOS Foundation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,8 +19,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common LMODroid stuff
+$(call inherit-product, vendor/lmodroid/config/common_full_phone.mk)
 
 # Inherit from ginna device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
@@ -43,7 +44,7 @@ BOARD_USES_RECOVERY_AS_BOOT := false
 PRODUCT_BRAND := motorola
 PRODUCT_DEVICE := ginna
 PRODUCT_MANUFACTURER := motorola
-PRODUCT_NAME := lineage_ginna
+PRODUCT_NAME := lmodroid_ginna
 PRODUCT_MODEL := moto e(7)
 PRODUCT_SHIPPING_API_LEVEL := 29
 
