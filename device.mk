@@ -439,7 +439,8 @@ PRODUCT_PACKAGES += \
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    vendor/partner_gms
 
 # Telephony
 PRODUCT_PACKAGES += \
