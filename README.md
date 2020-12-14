@@ -1,3 +1,3 @@
 Copyright 2019 - The LineageOS Project
 
-Device configuration for Motorola E7 (ginna)
+Device configuration for Motorola E (2020) (ginna)
