@@ -29,7 +29,7 @@
 
 static inline const char* BtmGetDefaultName()
 {
-    return "Moto E7";
+    return "Moto E";
 }
 
 #define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
