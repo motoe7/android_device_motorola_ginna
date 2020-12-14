@@ -32,3 +32,11 @@ on boot
 on late-fs
     write /sys/class/leds/charging/max_brightness 0
 
+on property:ro.boot.hardware.sku=XT2051-1
+    mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
+
+on property:ro.boot.hardware.sku=XT2051-2
+    mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
+
+on property:ro.boot.hardware.sku=XT2051-3
+    mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
