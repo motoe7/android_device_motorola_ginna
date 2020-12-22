@@ -37,3 +37,6 @@ on property:ro.boot.hardware.sku=XT2051-2
 
 on property:ro.boot.hardware.sku=XT2051-3
     mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
+
+on property:sys.boot_completed=1 && property:ro.boot.revision=EVT
+    write /sys/devices/platform/kcal_ctrl.0/kcal "256 256 235"
