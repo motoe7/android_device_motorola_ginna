@@ -405,7 +405,7 @@
     <bool translatable="false" name="config_wifi_turn_off_during_emergency_call">true</bool>
 
     <!-- MMS user agent string -->
-    <string name="config_mms_user_agent" translatable="false">motog7</string>
+    <string name="config_mms_user_agent" translatable="false">motoe</string>
 
     <!-- MMS user agent prolfile url -->
     <string name="config_mms_user_agent_profile_url">http://uaprof.motorola.com/phoneconfig/motov1/Profile/motov1.rdf</string>
