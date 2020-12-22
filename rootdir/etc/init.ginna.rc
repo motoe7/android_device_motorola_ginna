@@ -29,9 +29,6 @@ on boot
     chown system system /sys/class/leds/charging/max_brightness
     chmod 0664 /sys/class/leds/charging/max_brightness
 
-on late-fs
-    write /sys/class/leds/charging/max_brightness 0
-
 on property:ro.boot.hardware.sku=XT2051-1
     mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
 
