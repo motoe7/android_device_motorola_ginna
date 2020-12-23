@@ -29,14 +29,9 @@ on boot
     chown system system /sys/class/leds/charging/max_brightness
     chmod 0664 /sys/class/leds/charging/max_brightness
 
-on property:ro.boot.hardware.sku=XT2051-1
-    mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
-
-on property:ro.boot.hardware.sku=XT2051-2
-    mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
-
-on property:ro.boot.hardware.sku=XT2051-3
-    mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
-
 on property:sys.boot_completed=1 && property:ro.boot.revision=EVT
+    mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
     write /sys/devices/platform/kcal_ctrl.0/kcal "256 256 235"
+
+on property:ro.boot.revision=EVT3
+    mount none /vendor/etc/sensors/sensor_def_qcomdev_evt.conf /vendor/etc/sensors/sensor_def_qcomdev.conf bind
