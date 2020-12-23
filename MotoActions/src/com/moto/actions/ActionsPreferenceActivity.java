@@ -17,7 +17,9 @@
 
 package com.moto.actions;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Window;
 import android.preference.PreferenceActivity;
 
 public class ActionsPreferenceActivity extends PreferenceActivity {
@@ -27,5 +29,7 @@ public class ActionsPreferenceActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction()
             .replace(android.R.id.content, new ActionsPreferenceFragment()).commit();
+        Window window = getWindow();
+        window.setNavigationBarColor(Color.TRANSPARENT);
     }
 }

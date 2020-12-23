@@ -16,7 +16,9 @@
 
 package com.moto.actions;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Window;
 import android.preference.PreferenceActivity;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
@@ -30,6 +32,8 @@ public class DozePreferenceActivity extends PreferenceActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new DozePreferenceFragment()).commit();
+        Window window = getWindow();
+        window.setNavigationBarColor(Color.TRANSPARENT);
     }
 
     public static class DozePreferenceFragment extends PreferenceFragment {
