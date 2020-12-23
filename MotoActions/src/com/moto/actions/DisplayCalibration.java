@@ -27,9 +27,11 @@ import android.preference.SwitchPreference;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.Window;
 
 import android.app.ActionBar;
 import com.moto.actions.util.SeekBarPreference;
@@ -71,6 +73,8 @@ public class DisplayCalibration extends PreferenceActivity implements
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        Window window = getWindow();
+        window.setNavigationBarColor(Color.TRANSPARENT);
         setContentView(R.layout.display_cal);
 
         ImageView imageView = (ImageView) findViewById(R.id.calibration_pic);
