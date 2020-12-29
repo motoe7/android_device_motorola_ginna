@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.Window;
@@ -56,7 +57,6 @@ public class DisplayCalibration extends PreferenceActivity implements
     private SeekBarPreference mKcalColorTemp;
     private SharedPreferences mPrefs;
     private SwitchPreference mKcalEnabled;
-    private boolean mEnabled;
 
     private String mRed;
     private String mBlue;
@@ -66,6 +66,8 @@ public class DisplayCalibration extends PreferenceActivity implements
     private static final String COLOR_FILE_CONTRAST = "/sys/devices/platform/kcal_ctrl.0/kcal_cont";
     private static final String COLOR_FILE_SATURATION = "/sys/devices/platform/kcal_ctrl.0/kcal_sat";
     private static final String COLOR_FILE_ENABLE = "/sys/devices/platform/kcal_ctrl.0/kcal_enable";
+
+    private static final String TAG = "MotoActions-DisplayCalibration";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,9 @@ public class DisplayCalibration extends PreferenceActivity implements
         imageView.setImageResource(R.drawable.calibration_png);
 
         addPreferencesFromResource(R.xml.display_calibration);
+
+        // read values from kcal everytime to make sure values are correct after user modified kcal with other apps.
+        readKCALValue(this);
 
         mKcalEnabled = (SwitchPreference) findPreference(KEY_KCAL_ENABLED);
         mKcalEnabled.setChecked(mPrefs.getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false));
@@ -120,28 +125,39 @@ public class DisplayCalibration extends PreferenceActivity implements
         return UtilsKCAL.fileWritable(file);
     }
 
+    private static void readKCALValue(Context mContext) {
+        SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        String[] splitDefaultValue = UtilsKCAL.readValue(COLOR_FILE).split(" ");
+        if ( splitDefaultValue.length == 3) { // r g b
+            mPrefs.edit().putInt(KEY_KCAL_RED,  Integer.valueOf(splitDefaultValue[0])).commit();
+            mPrefs.edit().putInt(KEY_KCAL_GREEN,  Integer.valueOf(splitDefaultValue[1])).commit();
+            mPrefs.edit().putInt(KEY_KCAL_BLUE,  Integer.valueOf(splitDefaultValue[2])).commit();
+        }
+    }
+
     public static void restore(Context context) {
-       boolean storeEnabled = PreferenceManager
+        boolean storeEnabled = PreferenceManager
                 .getDefaultSharedPreferences(context).getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false);
-       if (storeEnabled) {
-           UtilsKCAL.writeValue(COLOR_FILE_ENABLE, "1");
-           UtilsKCAL.writeValue(COLOR_FILE, "1");
-           int storedRed = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_RED, 256);
-           int storedGreen = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_GREEN, 256);
-           int storedBlue = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_BLUE, 256);
-           int storedSaturation = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_SATURATION, 255);
-           int storedContrast = PreferenceManager
-                   .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_CONTRAST, 255);
-           String storedValue = ((String) String.valueOf(storedRed)
-                   + " " + String.valueOf(storedGreen) + " " +  String.valueOf(storedBlue));
-           UtilsKCAL.writeValue(COLOR_FILE, storedValue);
-           UtilsKCAL.writeValue(COLOR_FILE_CONTRAST, String.valueOf(storedContrast));
-           UtilsKCAL.writeValue(COLOR_FILE_SATURATION, String.valueOf(storedSaturation));
-       }
+        if (storeEnabled) {
+            // readKCALValue(context);
+            UtilsKCAL.writeValue(COLOR_FILE_ENABLE, "1");
+            int storedRed = PreferenceManager
+                    .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_RED, 256);
+            int storedGreen = PreferenceManager
+                    .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_GREEN, 256);
+            int storedBlue = PreferenceManager
+                    .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_BLUE, 256);
+            int storedSaturation = PreferenceManager
+                    .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_SATURATION, 255);
+            int storedContrast = PreferenceManager
+                    .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_CONTRAST, 255);
+            String storedValue = ((String) String.valueOf(storedRed)
+                    + " " + String.valueOf(storedGreen) + " " +  String.valueOf(storedBlue));
+            UtilsKCAL.writeValue(COLOR_FILE, storedValue);
+            UtilsKCAL.writeValue(COLOR_FILE_CONTRAST, String.valueOf(storedContrast));
+            UtilsKCAL.writeValue(COLOR_FILE_SATURATION, String.valueOf(storedSaturation));
+            Log.d(TAG, "written COLOR_FILE: " + storedValue);
+        }
     }
 
     @Override
