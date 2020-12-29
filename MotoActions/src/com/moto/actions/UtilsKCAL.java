@@ -20,9 +20,14 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Context;
 import android.content.Intent;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import android.content.SharedPreferences;
 import android.os.UserHandle;
@@ -48,6 +53,28 @@ public final class UtilsKCAL {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static String readValue(String filename) {
+        if (!fileExists(filename)) return null;
+        BufferedReader reader = null;
+        try {
+            StringBuilder sb = new StringBuilder();
+
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filename))));
+            String line;
+            if ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            reader.close();
+            return sb.toString();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
