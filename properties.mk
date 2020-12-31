@@ -112,6 +112,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.fm.use_audio_session=true
 
+# LowMem
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.madvise-random=true
+
 # Media
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     media.stagefright.thumbnail.prefer_hw_codecs=true
