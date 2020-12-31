@@ -312,6 +312,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libstagefright_ccodec
 
+# Memory Configs
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+
 # Network
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0
