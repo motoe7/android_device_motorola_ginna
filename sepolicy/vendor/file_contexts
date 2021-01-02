@@ -31,6 +31,7 @@
 /(vendor|system/vendor)/bin/init\.mmi\.(laser|usb)\.sh                          u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.power\.sh                               u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/perfd                                               u:object_r:perfd_exec:s0
+/vendor/bin/init\.mmi\.touch\.sh u:object_r:qti_init_shell_exec:s0
 
 /sys/devices/soc/c900000\.qcom,mdss_mdp/c900000\.qcom,mdss_mdp:qcom,mdss_fb_primary/leds/lcd-backlight(/.*)?                  u:object_r:sysfs_leds:s0
 /sys/devices/soc/800f000\.qcom,spmi/spmi-0/spmi0-03/800f000\.qcom,spmi:qcom,pm660l@3:qcom,leds@d000/leds/charging(/.*)?        u:object_r:sysfs_leds:s0
@@ -51,6 +52,10 @@
 /(vendor|system/vendor)/bin/wlan_carrier_bin\.sh            u:object_r:init_wifi_exec:s0
 
 /(vendor|system/vendor)/bin/capsense_reset              u:object_r:capsense_reset_exec:s0
+
+/sys/chipone-tddi(/.*)? u:object_r:sysfs_touchscreen:s0
+
+/sys/devices/platform/soc/7af7000.spi/spi_master/spi7/spi7.0(/.*)? u:object_r:sysfs_touchscreen:s0
 
 # NFC
 /(vendor|system/vendor)/bin/hw/vendor\.nxp\.nxpnfc@1\.0-service            u:object_r:hal_nfc_default_exec:s0
