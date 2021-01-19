@@ -47,7 +47,6 @@ char const *heapsize;
 char const *heapminfree;
 char const *heapmaxfree;
 char const *heaptargetutilization;
-bool is2GB;
 
 void check_device()
 {
@@ -79,7 +78,6 @@ void check_device()
         heaptargetutilization = "0.75";
         heapminfree = "512k";
         heapmaxfree = "8m";
-        is2GB = true;
     }
 }
 
@@ -105,8 +103,4 @@ void vendor_load_properties()
     property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
     property_override("dalvik.vm.heapminfree", heapminfree);
     property_override("dalvik.vm.heapmaxfree", heapmaxfree);
-
-    // LowMem
-    if (is2GB)
-        property_override("ro.config.low_ram", "true");
 }
