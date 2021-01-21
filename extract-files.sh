@@ -26,9 +26,9 @@ VENDOR=motorola
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-LMODROID_ROOT="$MY_DIR"/../../..
+ROOT="$MY_DIR"/../../..
 
-HELPER="$LMODROID_ROOT"/vendor/lmodroid/build/tools/extract_utils.sh
+HELPER="$ROOT"/vendor/*/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -79,7 +79,7 @@ function blob_fixup() {
 }
 
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$LMODROID_ROOT" false "$CLEAN_VENDOR"
+setup_vendor "$DEVICE" "$VENDOR" "$ROOT" false "$CLEAN_VENDOR"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 

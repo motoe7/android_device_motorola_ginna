@@ -28,9 +28,9 @@ INITIAL_COPYRIGHT_YEAR=2019
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-LMODROID_ROOT="$MY_DIR"/../../..
+ROOT="$MY_DIR"/../../..
 
-HELPER="$LMODROID_ROOT"/vendor/lmodroid/build/tools/extract_utils.sh
+HELPER="$ROOT"/vendor/*/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -38,7 +38,7 @@ fi
 . "$HELPER"
 
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$LMODROID_ROOT"
+setup_vendor "$DEVICE" "$VENDOR" "$ROOT"
 
 # Copyright headers and guards
 write_headers
