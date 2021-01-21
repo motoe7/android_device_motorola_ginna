@@ -1,7 +1,15 @@
 [
   {
-    "repository": "android_kernel_motorola_sdm632",
-    "target_path": "kernel/motorola/sdm632"
+    "remote": "github",
+    "repository": "motoe7/android_kernel_motorola_sdm632",
+    "branch": "lineage-18.1"
+    "target_path": "kernel/motorola/ginna"
+  },
+  {
+    "remote": "github",
+    "repository": "motoe7/android_vendor_motorola_ginna",
+    "branch": "lineage-18.1"
+    "target_path": "vendor/motorola/ginna"
   },
   {
     "repository": "android_external_bson",
