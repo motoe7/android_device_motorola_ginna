@@ -16,9 +16,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lmodroid_ginna.mk
+    $(LOCAL_DIR)/lineage_ginna.mk
 
 COMMON_LUNCH_CHOICES := \
-    lmodroid_ginna-eng \
-    lmodroid_ginna-user \
-    lmodroid_ginna-userdebug
+    lineage_ginna-eng \
+    lineage_ginna-user \
+    lineage_ginna-userdebug
