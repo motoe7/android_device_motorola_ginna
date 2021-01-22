@@ -37,6 +37,7 @@
 #include <android-base/properties.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
+#include <sys/stat.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
@@ -47,6 +48,59 @@ char const *heapsize;
 char const *heapminfree;
 char const *heapmaxfree;
 char const *heaptargetutilization;
+
+/* From Magisk@jni/magiskhide/hide_utils.c */
+static const char *snet_prop_key[] = {
+    "ro.boot.vbmeta.device_state",
+    "ro.boot.flash.locked",
+    "ro.boot.selinux",
+    "ro.boot.veritymode",
+    "ro.boot.warranty_bit",
+    "ro.warranty_bit",
+    "ro.debuggable",
+    "ro.secure",
+    "ro.build.type",
+    "ro.build.tags",
+    "ro.build.selinux",
+    NULL
+};
+
+ static const char *snet_prop_value[] = {
+    "locked",
+    "1",
+    "enforcing",
+    "enforcing",
+    "0",
+    "0",
+    "0",
+    "1",
+    "user",
+    "release-keys",
+    "1",
+    NULL
+};
+
+void property_override(char const prop[], char const value[], bool add = true)
+{
+    prop_info *pi;
+
+    pi = (prop_info *) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else if (add)
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
+static void workaround_snet_properties() {
+
+    // Hide all sensitive props
+    for (int i = 0; snet_prop_key[i]; ++i) {
+        property_override(snet_prop_key[i], snet_prop_value[i]);
+    }
+
+    chmod("/sys/fs/selinux/enforce", 0640);
+    chmod("/sys/fs/selinux/policy", 0440);
+}
 
 void check_device()
 {
@@ -81,17 +135,6 @@ void check_device()
     }
 }
 
-void property_override(char const prop[], char const value[], bool add = true)
-{
-    auto pi = (prop_info *) __system_property_find(prop);
-
-    if (pi != nullptr) {
-        __system_property_update(pi, value, strlen(value));
-    } else if (add) {
-        __system_property_add(prop, strlen(prop), value, strlen(value));
-    }
-}
-
 void vendor_load_properties()
 {
     check_device();
@@ -103,4 +146,8 @@ void vendor_load_properties()
     property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
     property_override("dalvik.vm.heapminfree", heapminfree);
     property_override("dalvik.vm.heapmaxfree", heapmaxfree);
+
+    // SafetyNet workaround
+    property_override("ro.boot.verifiedbootstate", "green");
+    workaround_snet_properties();
 }
