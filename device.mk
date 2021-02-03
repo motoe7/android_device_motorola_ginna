@@ -288,7 +288,7 @@ PRODUCT_PACKAGES += \
 
 # MotoActions
 PRODUCT_PACKAGES += \
-    MotoActionsG
+    MotoActions
 
 # Media
 PRODUCT_COPY_FILES += \
