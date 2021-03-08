@@ -29,18 +29,6 @@ on post-fs-data
     # This dir only for preinstall app so libs
     mkdir /data/app-lib2 0771 system system
 
-on moto-charger
-    setprop ro.board.platform msm8953
-    trigger firmware_mounts_complete
-    setprop sys.usb.configfs 1
-    setprop sys.usb.config charging
-    start qcom-post-boot
-    start vendor.hvdcp_opti
-    start gbmodinstall
-    start vendor.charge_only_mode
-    start vendor.batt_health
-    start vendor.thermal-com
-
 # Set hub drive strength to +5%
 on property:ro.bootmode=normal
    write /sys/module/usb3813_hub/parameters/boost_val 3

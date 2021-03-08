@@ -909,12 +909,12 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
-#service charger /system/bin/charger
-#    class charger
-#    user system
-#    group system graphics input
-#    capabilities SYS_BOOT
-#    seclabel u:r:charger:s0
+service charger /system/bin/charger
+    class charger
+    user system
+    group system graphics input
+    capabilities SYS_BOOT
+    seclabel u:r:charger:s0
 
 service vendor.ssr_diag /system/vendor/bin/ssr_diag
     class late_start
@@ -1020,8 +1020,8 @@ service esepmdaemon /system/vendor/bin/esepmdaemon
     user system
     group nfc
 
-#on charger
-#    setprop persist.sys.usb.config charging
+on charger
+    setprop persist.sys.usb.config charging
 
 #add poweroffhandler
 service poweroffhandler /system/vendor/bin/poweroffhandler

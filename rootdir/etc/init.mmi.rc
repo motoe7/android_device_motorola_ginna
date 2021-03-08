@@ -249,7 +249,6 @@ on charger
     trigger fs
     trigger post-fs
     trigger post-fs-data
-    trigger moto-charger
     start system_suspend
     class_stop main
     class_stop late_start

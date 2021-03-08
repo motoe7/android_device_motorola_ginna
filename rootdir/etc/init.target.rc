@@ -313,7 +313,6 @@ on charger
     mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
     setprop sys.usb.configfs 1
     start qcom-post-boot
-    setprop persist.sys.usb.config mass_storage
     start vendor.hvdcp_opti
 
 service dts_configurator /system/vendor/bin/dts_configurator
