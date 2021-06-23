@@ -414,9 +414,11 @@ vendor/lib64/libcne.so
 
 # Display calib
 vendor/etc/qdcm_calib_data_mipi_mot_vid_hlt_hd_621.xml
+vendor/etc/qdcm_calib_data_mipi_mot_vid_tianma_hd_620.xml
 vendor/etc/qdcm_calib_data_mipi_mot_vid_tianma_hd_621.xml
 
 # Display Panel Firmware
+vendor/firmware/chipone-tianma-ICNL9911C-0288-0000-ginna.bin
 vendor/firmware/chipone-tianma-ICNL9911S-0125-0000-ginna.bin
 vendor/firmware/focaltech-hlt-ft8006s_aa-0b-0000-ginna.bin
 vendor/firmware/FT8006U_Pramboot.bin
