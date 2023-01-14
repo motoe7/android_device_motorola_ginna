@@ -1,3 +1,9 @@
+# Audio
+vendor/lib/hw/audio.primary.msm8953.so
+vendor/lib/vndk/libtinyalsa.so
+vendor/lib/libtinycompress_vendor.so
+vendor/lib/libmotaudioutils.so|c1ad2def0e15b7ee069f09a65ef4f9f147ab5525
+
 # ADSP
 vendor/bin/adsprpcd
 vendor/lib/libadsp_default_listener.so
